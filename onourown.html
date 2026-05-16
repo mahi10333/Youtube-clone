@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Youtube.com Clone
+        </title>
+        <style>
+            body {
+                margin: 0;
+                padding-top: 80px;
+                padding-left: 80px;
+                padding-left: 96px;
+                padding-right: 24px;
+                background-color: rgb(248,248,248);
+            }
+
+            button {
+                cursor: pointer;
+            }
+
+            p {
+                cursor: pointer;
+            }
+            
+            .hamburger {
+                margin-left: 24px;
+                cursor: pointer;
+                height: 24px;
+                margin-right: 20px;
+            }
+
+            .Youtube {
+                cursor: pointer;
+                height: 20px;
+            }
+
+            .Search-bar {
+                height: 36px;
+                cursor: text;
+                flex: 1;
+                padding-left: 10px;
+                font-size: 16px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgb(192,192,192);
+                border-radius: 2px;
+                box-shadow: inset 1px 2px 3px rgba(0,0,0,0.05);
+                width: 0;
+                margin-right: 5px;
+            }
+
+            .Search-bar::placeholder {
+                font-family: Arial;
+                font-size: 16px;
+            }
+
+            .voice-search {
+                height: 40px;
+                width: 40px;
+                border-radius: 30px;
+                border: none;
+                margin-left: 5px;
+                background-color: rgb(245,245,245);
+            }
+        
+            .voice-search-icon {
+                height: 24px;
+                margin-top: 4px;
+                position: relative;
+            }
+
+            .search-button {
+                height: 37px;
+                width: 66px;
+                background-color: rgb(238, 238, 238);
+                border-width: 1px;
+                border-style: solid;
+                border-color: rgb(192,192,192);
+                margin-left: -5px;
+                margin-right: 10px;
+                position: relative;
+            }
+
+            .search-button .tip, 
+            .voice-search .tip,
+            .record-icon .tip,
+            .squares-icon .tip,
+            .noti .tip {
+                position: absolute;
+                background-color:grey;
+                color: white;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-right: 8px;
+                padding-left: 8px;
+                border-radius: 2px;
+                font-size: 12px;
+                bottom: -30;
+                opacity: 0;
+                transition: opacity 0.15s;
+                pointer-events: none;
+                white-space: nowrap;
+                font-family: Arial;
+            }
+
+            .search-button:hover .tip,
+            .voice-search:hover .tip,
+            .record-icon:hover .tip,
+            .squares-icon:hover .tip,
+            .noti:hover .tip  {
+                opacity: 1;
+
+            }
+
+            .search-icon {
+                height: 25px;
+                margin-top: 4px;
+            }
+
+            .record {
+                height: 25px;
+                width: 25px;
+                margin-right: 5px;
+            }
+
+            .squares {
+                height: 25px; 
+                width: 25px;
+            }
+
+            .bell {
+                height: 25px;
+                width: 25px;
+            }
+
+            .noti {
+                position: relative
+            }
+
+            .count {
+                position: absolute;
+                top: 0px;
+                right: -4px;
+                background-color: rgb(200,0,0);
+                color: white;
+                font-family: Arial;
+                font-size: 11px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                border-radius: 10px;
+            }
+
+            .me {
+                height: 40px;
+                border-radius: 20px;
+            }
+
+            .tech {
+                color: black;
+                font-size: 14px;
+                font-weight: bold;
+                width: 300px;
+                margin-left: -7px;
+                display: inline-block;
+                cursor: pointer;
+                font-family: Arial;
+                margin-top: 0px;
+            }
+
+            .small {
+               border-radius: 50%;
+               height: 36px;
+               display: inline;
+               margin-left: 2px;
+               width: 36px;
+               margin-top: 0px;
+            }
+
+            .name {
+                color: black;
+                font-size: 12px;
+                margin-left: 1px;
+                cursor: pointer;
+                font-family: Arial;
+                margin-top: 0px;
+                margin-bottom: 7px;
+            }
+
+            .views {
+                margin-left: 1px;
+                font-family: Arial;
+                font-size: 12px;
+                margin-top: 0px;
+            }
+
+            .small2 {
+                border-radius: 50%;
+                height: 36px;
+                display: inline;
+                vertical-align: middle;
+                margin-left: 0px;
+                width: 36px;
+                margin-top: 0px;
+            }
+
+            .laugh {
+                color: black;
+                font-size: 14px;
+                width: 320px;
+                margin-left: -5px;
+                display: inline-block;
+                cursor: pointer;
+                font-family: Arial;
+                margin-top: 17px;
+                vertical-align: top;
+                font-weight: bold;
+                margin-top: 0px;
+            }
+
+            .name2 {
+                color: black;
+                font-size: 12px;
+                cursor: pointer;
+                font-family: Arial;
+                margin-left: 1px;
+                margin-top: 0px;
+                margin-bottom: 7px;
+            }
+
+            .video-info-grid {
+                display: grid;
+                grid-template-columns: 50px 1fr;
+            }
+
+            .channel-picture3 {
+                display: inline-block;
+                width: 50px;
+                vertical-align: top;
+            }
+
+            .small3 {
+                border-radius: 50%;
+                margin-top: 0px;
+                height: 36px;
+                display: inline;
+                vertical-align: middle;
+                margin-left: 2px;
+                width: 36px;
+            }
+
+            .tiktok {
+                color: black;
+                font-size: 14px;
+                width: 270px;
+                margin-left: 0px;
+                display: inline-block;
+                cursor: pointer;
+                font-family: Arial;
+                margin-top: 17px;
+                vertical-align: middle;
+                font-weight: bold;
+                margin-top: 0px;
+            }
+
+            .name3 {
+                color: black;
+                font-size: 12px;
+                cursor: pointer;
+                font-family: Arial;
+                margin-left: 1px;
+                margin-top: 0px;
+                margin-bottom: 7px; 
+            }    
+            
+            .small4 {
+                border-radius: 50%;
+                margin-top: 0px;
+                height: 36px;
+                display: inline;
+                vertical-align: middle;
+                margin-left: 3px;
+                width: 36px;
+            }
+
+            .math {
+                color: black;
+                font-size: 14px;
+                width: 300px;
+                margin-left: 0px;
+                display: block;
+                cursor: pointer;
+                font-family: Arial;
+                margin-top: 17px;
+                font-weight: bold;
+                margin-top: 0px;
+            }
+
+            .name4 {
+                color: black;
+                font-size: 12px;
+                cursor: pointer;
+                font-family: Arial;
+                margin-left: 1px;
+                margin-top: 0px;
+                margin-bottom: 7px; 
+            }   
+            
+            .video-grid {
+                display: grid;
+                grid-template-columns: 341px 341px 341px 341px;
+                column-gap: 16px;
+                row-gap: 25px;  
+            }
+
+            .pay {
+                color: black;
+                font-size: 14px;
+                font-weight: bold;
+                width: 320px;
+                margin-left: -7px;
+                display: inline-block;
+                cursor: pointer;
+                font-family: Arial;
+                margin-top: 0px;
+            }
+
+            .thumbnail {
+                object-fit: cover;
+                margin-top: 4px;
+                height: 200px;
+                width: 100%
+            }
+
+            .first-timing {
+                background-color: black;
+                color: white;
+
+            }
+
+            .header {
+                height: 55px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: white;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-bottom-color: rgb(228,228,228); 
+                z-index: 100;
+            }
+
+            .left-section {
+                display: flex;
+                align-items: center;
+            }
+
+            .center {
+                flex: 1;
+                margin-left: 70px;
+                margin-right: 35px;
+                max-width: 500px;
+                display: flex;
+                align-items: center;
+            }
+
+            .right-section {
+                width: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-right: 20px;
+                flex-shrink: 0;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                top: 55px;
+                background-color: white;
+                width: 72px;
+            }
+
+            .sidebar-buttons {
+                background-color: white;
+                height: 74px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                z-index: 200;
+                padding-top: 5px;
+            }
+
+            .sidebar-buttons:hover {
+                background-color: rgb(235,235,235);
+            }
+
+            .sidebar-buttons img {
+                height: 24px;
+                display: flex;
+                margin-bottom: 4px;
+            }
+
+            .sidebar-buttons div {
+                font-family: Arial;
+                font-size: 10px;
+            }
+
+            .video-timing {
+                background-color: black;
+                color: white;
+                position: absolute;
+                bottom: 8px;
+                right: 5px;
+                font-size: 13px;
+                font-family: Arial;
+                font-weight: 500;
+                padding-left: 4px;
+                padding-right: 4px;
+                padding-bottom: 4px;
+                padding-top: 4px;
+                border-radius: 2px;
+            }
+
+            .thumbnail-row {
+                margin-bottom: 8px;
+                position: relative;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="header">
+            <div class="left-section">       <!-- This will have a predefined width -->
+                <img class="hamburger" src="images/2nd image.svg">
+                <img class="Youtube" src="images/3rd image.svg">
+            </div>
+            <div class="center">            <!-- This will be a flex as when we are resizing the page, only the middle section resizes. -->
+                <input class="Search-bar" type="text" placeholder="Search">
+                <button class="search-button">
+                    <img class="search-icon" src="images/4th image.svg">
+                    <div class="tip">Search</div>
+                </button>
+                <button class="voice-search">
+                    <img  class="voice-search-icon" src="images/28th image.svg">
+                    <div class="tip">Search with your voice</div>
+                </button>
+            </div>
+            <div class="right-section">     <!-- This will have a predefined width -->
+                <div class="record-icon">
+                    <img class="record" src="images/29th image.svg">
+                     <div class="tip">Create</div>
+                </div>
+                <div class="squares-icon">
+                    <img class="squares" src="images/30th image.svg">
+                    <div class="tip">Youtube Apps</div>
+                </div>
+                
+                <div class="noti">
+                    <img class="bell" src="images/31st image.svg">
+                    <div class="count">3</div>
+                    <div class="tip">Notifications</div>
+                </div>
+                <div>
+                    <img class="me" src="images/32nd image.jpeg">
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="sidebar-buttons">
+                <img src="images/33rd image.svg">
+                <div>Home</div>
+            </div>
+            <div class="sidebar-buttons">
+                <img src="images/34th image.svg">
+                <div>Explore</div>
+            </div>
+            <div class="sidebar-buttons">
+                <img src="images/35th image.svg">
+                <div>Subsrciptions</div>
+            </div>
+            <div class="sidebar-buttons">
+                <img src="images/36th image.svg">
+                <div>Originals</div>
+            </div>
+            <div class="sidebar-buttons">
+                <img src="images/37th image.svg">
+                <div>Youtube Music</div>
+            </div>
+            <div class="sidebar-buttons">
+                <img src="images/38th image.svg">
+                <div>Library</div>
+            </div>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-preview">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/1st image.webp">
+                <div class="video-timing">14:20</div>
+            </div>
+        <div class="video-info-grid">
+            <div class="channel-picture">
+                <img class="small" src="images/5th image.webp">
+            </div>
+            <div class="video-info">
+        <p class="tech">
+            Talking Tech and AI with Google CEO Sundar Pichai!
+        </p>
+        <p class="name">
+            Marques Brownlee
+        </p>
+        <p class="views">
+            3.4M views &#183 6 months ago 
+        </p>
+            </div>
+         </div>
+        </div>
+
+        <div class="video-preview2">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/6th image.webp">
+                <div class="video-timing">8:22</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture2">
+        <img class="small2" src="images/7th image.webp">
+                </div>
+                <div class="video-info2">
+        <p class="laugh">
+            Try Not To Laugh Challenge #9
+        </p>
+        <p class="name2">
+            Markiplier
+        </p>
+        <p class="views">
+            19M views &#183 4 years ago 
+        </p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview3">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/8th image.webp">
+                 <div class="video-timing">9:13</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture3">
+                    <img class="small3" src="images/9th image.webp">
+                </div>
+               <div class="video-info3">
+                 <p class="tiktok">
+                    Crazy Tik Toks Taken Moments Before DISASTER
+                </p>
+                <p class="name3">
+                    SSSniperWolf
+                </p>
+                <p class="views">
+                    12M views &#183 1 year ago
+                </p>
+               </div>
+            </div>
+        </div>
+        <div class="video-preview4">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/10th image.webp">
+                 <div class="video-timing">22:09</div>
+            </div>
+            <div class="video-info-grid">
+            <div class="channel-picture4">
+                <img class="small4" src="images/11th image.webp">
+            </div>
+            <div class="video-info4">
+                <p class="math">
+                    The Simplest Math Problem No One Can Solve-Collatz Conjecture
+                </p>
+                <p class="name4">
+                    Veritasium
+                </p>
+                <p class="views">
+                    18M views &#183 4 months ago
+                </p>
+            </div>
+        </div>
+    </div>
+
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/12th image.webp">
+                 <div class="video-timing">11:17</div>
+            </div>
+        <div class="video-info-grid">
+            <div class="channel-picture">
+                <img class="small" src="images/13th image.webp">
+            </div>
+            <div class="video-info">
+        <p class="tech">
+            Kadane's Algorithm to Maximum Sum Subarray Problem
+        </p>
+        <p class="name">
+            CS Dojo
+        </p>
+        <p class="views">
+            519K views &#183 5 years ago 
+        </p>
+            </div>
+         </div>
+        </div>
+
+        <div class="video-preview2">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/14th image.webp">
+                 <div class="video-timing">19:59</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture2">
+        <img class="small2" src="images/15th image.webp">
+                </div>
+                <div class="video-info2">
+        <p class="pay">
+            Anything You Can Fit In The Circle I'll Pay For
+        </p>
+        <p class="name2">
+            MrBeast
+        </p>
+        <p class="views">
+            141M views &#183 1 year ago 
+        </p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview3">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/16th image.webp">
+                 <div class="video-timing">10:13</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture3">
+                    <img class="small3" src="images/17th image.webp">
+                </div>
+               <div class="video-info3">
+                 <p class="tiktok">
+                    Why Planes Don't Fly Over Tibet
+                </p>
+                <p class="name3">
+                    RealLifeLore
+                </p>
+                <p class="views">
+                    6.6M views &#183 1 year ago
+                </p>
+               </div>
+            </div>
+        </div>
+        <div class="video-preview4">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/18th image.webp">
+                 <div class="video-timing">7:12</div>
+            </div>
+            <div class="video-info-grid">
+            <div class="channel-picture4">
+                <img class="small4" src="images/19th image.webp">
+            </div>
+            <div class="video-info4">
+                <p class="math">
+                    Inside The World's Biggest Passanger Plane
+                </p>
+                <p class="name4">
+                    Tech Vision
+                </p>
+                <p class="views">
+                    3.7M views &#183 10 months ago
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-preview">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/20th image.webp">
+                 <div class="video-timing">13:17</div>
+            </div>
+        <div class="video-info-grid">
+            <div class="channel-picture">
+                <img class="small" src="images/21st image.webp">
+            </div>
+            <div class="video-info">
+        <p class="tech">
+            The SECRET to Super Human STRENGTH
+        </p>
+        <p class="name">
+            ThenX
+        </p>
+        <p class="views">
+            20M views &#183 3 years ago 
+        </p>
+            </div>
+         </div>
+        </div>
+
+        <div class="video-preview2">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/22nd image.webp">
+                 <div class="video-timing">7:53</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture2">
+        <img class="small2" src="images/23rd image.webp">
+                </div>
+                <div class="video-info2">
+        <p class="pay">
+            How The World's Largest Cruise Ship Makes 30,000 Meals Every Day
+        </p>
+        <p class="name2">
+            Business Insider
+        </p>
+        <p class="views">
+            14M views &#183 1 year ago 
+        </p>
+                </div>
+            </div>
+        </div>
+        <div class="video-preview3">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/24th image.webp">
+                 <div class="video-timing">4:10</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture3">
+                    <img class="small3" src="images/25th image.webp">
+                </div>
+               <div class="video-info3">
+                 <p class="pay">
+                    Dubai's Crazy Underwater Train and Other Things #Only in Dubai
+                </p>
+                <p class="name3">
+                    Destination Tips
+                </p>
+                <p class="views">
+                    3M views &#183 1 year ago
+                </p>
+               </div>
+            </div>
+        </div>
+        <div class="video-preview4">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="images/26th image.webp">
+                 <div class="video-timing">4:51</div>
+            </div>
+            <div class="video-info-grid">
+            <div class="channel-picture4">
+                <img class="small4" src="images/27th image.webp">
+            </div>
+            <div class="video-info4">
+                <p class="pay">
+                    What would happen if you don't drink water?-Mia Nacamulli
+                </p>
+                <p class="name4">
+                    TED-Ed
+                </p>
+                <p class="views">
+                    12M views &#183 5 years ago
+                </p>
+            </div>
+        </div>
+    </div>
+        </div>
+    </body>
+</html>
